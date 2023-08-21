@@ -1,0 +1,255 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	<title>Introduction</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="assets/css/noscript.css" />
+	</noscript>
+</head>
+
+<body class="is-preload">
+
+	<!-- Page Wrapper -->
+	<div id="page-wrapper">
+
+		<!-- Header -->
+		<header id="header">
+			<h1><a href="index.html">Game Reddits Analysis</a></h1>
+			<nav>
+				<a href="#menu">Menu</a>
+			</nav>
+		</header>
+
+		<!-- Menu -->
+		<nav id="menu">
+			<div class="inner">
+				<h2>Menu</h2>
+				<ul class="links">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="introduction.html">Introduction</a></li>
+					<li><a href="eda.html">EDA</a></li>
+					<li><a href="nlp.html">NLP</a></li>
+					<li><a href="ml.html">ML</a></li>
+                  	<li><a href="conclusion.html">conclusion</a></li>
+
+				</ul>
+				<a href="#" class="close">Close</a>
+			</div>
+		</nav>
+
+		<!-- Wrapper -->
+		<section id="wrapper">
+			<header>
+				<div class="inner">
+					<h2>Introduction</h2>
+					<p>A Walk Through of the Project</p>
+				</div>
+			</header>
+
+			<!-- Content -->
+			<div class="wrapper">
+				<div class="inner">
+
+					<section>
+						<h3 class="major">Overview</h3>
+						<p>Reddit is a social news platform and a discussion board where users vote on and socially select content. The Reddit story increased rapidly in the recent years. The website makes fun of the phrase "I read it." The site comprises hundreds of subcommunities, known as subreddits, and each has a specific topic. Today, Reddit is one of the world's most popular social platforms, with over 430 million active users. We wish to use Reddit data as our main source of study because it is an open source that contains popular news among ordinary citizens.
+						</p>
+                      	<img src="images/i1.png" width="800" height="450" class="center">
+						<p style="text-align:center; font-size:16px">
+                          reference: https://www.digitalinformatieonworld.com/2021/09/mobile-game-spending-continues-enormous.html
+                        </p>
+						<p>People spend 35 percent more time on games compared to two years before. Our topic is the Game theme since it was Reddit's second most popular theme in 2021. Additionally, every one of the top five most visited subreddits relates to Game. Reddit provides an online platform to share gaming experiences and discuss game content; game players and developers can get inspiration and share ideas, walkthroughs, and guides.
+						</p>
+                      	<img src="images/i2.png" width="700" height="450" class="center">
+                        <p style="text-align:center; font-size:16px">
+                          reference: https://www.aakashg.com/2022/06/06/reddit/
+                        </p>
+						<p>To be specific, since the Game theme contains a large portion of different subreddits. Our group concentrated our investigation on two key subreddits. Because of the Reddit data's timeliness, we only use half of the years' data to decide the most population subreddit for current society. For other analyses, we will use more data, one and a half years, to show how these two subreddits' features. We will examine ten business questions through our study of the data, including the popularity of the games, their suitability for teenage viewers, whether or not they have received favorable or negative comments from users, the periods when posts are most active, etc. These questions will be listed below. We will also show our ideas and findings through the projects.
+						</p>
+                      <p>
+                        The reason why we would like to inquire more on Game this topic is that this report can purpose some inspiration to Game manufacturers and game designers. Reddit lovers or bloggers can also use the analysis tips through the project to make their posts more popular. Hope more people can use our project's analysis to explore more.
+                      </p>
+
+					</section>
+
+					<section>
+						<h3 class="major">Business Questions</h3>
+						<div class="row">
+							<div class="col-12 col-12-medium">
+								<ol>
+									<li>Which games will be the project's topic, and why?</li>
+									<ul>
+										<li>Technical proposal: Based on the subreddit of the 'Games', classified and
+											count the number of posts and choose the long-term popular game and
+											short-term popular game. EDA and NLP will be the most used techniques. Plot
+											the basic EDA to see how the game posts are distributed. NLP will be used
+											based on filtered different words that might be ignored in the EDA process.
+										</li>
+									</ul>
+									<li>Do these games impact teenagers (aged below 18)?
+										<ul>
+											<li>
+												Technical proposal: Extract the ‘over-18’ column of these subreddits
+												(which are selected by question 1) comments. Count the total number of
+												people who are below 18. Use the pie chart to see the percentage of
+												teenagers in all people who post in these subreddits.
+											</li>
+
+										</ul>
+									</li>
+									<li>Which topics and news are discussed very popular in each subreddit?
+										<ul>
+											<li>
+												Technical proposal: Feed all comments into the word tokenizer, remove
+												all stop words and punctuation, and also make use of stemming and
+												lemmatization. Perform a count of each word occurrence using the
+												FreqDist() function, and select the top 10 frequent words.
+											</li>
+										</ul>
+
+
+									</li>
+									<li>What is the game popularity in each game/subreddit?
+										<ul>
+											<li>
+												Technical proposal: Collect all the posts on Reddit in the past. Using a
+												bar chart to show how much Reddit has been posted each year. Using the
+												total number of Reddits to judge the game's popularity and compare the
+												number of changes in the past.
+											</li>
+										</ul>
+									</li>
+									<li>What is the relationship between these subreddits and social media(Youtube)?
+										<ul>
+											<li>
+												Technical proposal: Using Youtube API to judge the relationship between
+												different games and social media. There are several ways to do that.
+												Compare the total re-creation video that exists on Youtube and see the
+												number difference. Can also be done by collecting the total clicks on
+												the official game companies on Youtube.
+											</li>
+										</ul>
+									</li>
+									<li>Based on the target games, which game will show a positive effect in
+										reality(posts)?
+										<ul>
+											<li>
+												Technical proposal: In the comment section, perform the post-sentiment
+												analysis using NLP. Analysis of different games' positive affect or not.
+												Perform a contrastive analysis.
+											</li>
+										</ul>
+									</li>
+									<li>
+										Based on different target games, will the game user tend to post videos or
+										comments, why will this phenomenon happen?
+										<ul>
+											<li>
+												Technique proposal: In the column, is_video, use EDA to show whether the
+												posts are in video format or comments format. Using the time column to
+												see whether it is affected by the time. Will time be the bigger
+												influence factor or type of game or other?
+											</li>
+										</ul>
+									</li>
+									<li>
+										What makes users in game subreddit to like/dislike a post/comment?
+
+										<ul>
+											<li>
+												Technical proposal: Feature engineering on possible elements affect
+												comment score: length of the post, image or not, etc. Use different ML
+												methods to construct relationships between variables and targets.
+												Turning the hyperparameters of the model to get the optimal performance.
+											</li>
+										</ul>
+									</li>
+									<li>
+										How many categories can those posts be placed in? And what are they?
+										<ul>
+											<li>
+												Technique proposal: Based on the content of the posts, categories the
+												posts. Use Latent Dirichlet Allocation to construct the clustering
+												model. Manually tag each cluster based on the content.
+
+											</li>
+										</ul>
+									</li>
+									<li>
+										At what time(hour of a day) is each subreddit most active?
+										<ul>
+											<li>
+												Technical proposal: Extract the creation time of all subreddit comments.
+												Count the number of posts for each hour and plot the result for each
+												subreddit. Compare the two plots and find when users in each subreddit
+												are most active.
+											</li>
+										</ul>
+									</li>
+									<li>
+										Identify the relationship between comments scores and post creation time(day of week)
+										<ul>
+											<li>
+												Technical proposal: Extract the scores and creation time of comments.
+												Make a Side-by-Side Boxplot with these two variables. Check whether
+												there is an association between comments scores and their post-creation
+												time.
+											</li>
+										</ul>
+									</li>
+								</ol>
+							</div>
+					</section>
+
+					<section>
+						<h3 class="major">Appendix I (what updates we made):</h3>
+						<div class="row">
+							<div class="col-12 col-12-medium">
+								<ol>
+									<li>Change the business question from "Do these games impact teenagers (aged below 18)" to "Are the content of the games' subreddits suitable for teenagers?" since our team doesn't have enough data to explore the effects of games on teens.</li>
+									<br>
+
+									<li>Change the business question from "How many categories can those posts be placed in? And what are they?" to "Whether we can use texts from the users to split those posts into different subreddits?"
+									</li>
+									<br>
+
+								</ol>
+							</div>
+					</section>
+
+				</div>
+			</div>
+
+		</section>
+
+		<!-- Footer -->
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+<style>
+	.center {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: 25px;
+	}
+</style>
+</html>

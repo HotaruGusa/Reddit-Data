@@ -1,0 +1,225 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	<title>Natural language processing</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="assets/css/noscript.css" />
+	</noscript>
+</head>
+
+<body class="is-preload">
+
+	<!-- Page Wrapper -->
+	<div id="page-wrapper">
+
+		<!-- Header -->
+		<header id="header">
+			<h1><a href="index.html">Game Reddits Analysis</a></h1>
+			<nav>
+				<a href="#menu">Menu</a>
+			</nav>
+		</header>
+
+		<!-- Menu -->
+		<nav id="menu">
+			<div class="inner">
+				<h2>Menu</h2>
+				<ul class="links">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="introduction.html">Introduction</a></li>
+					<li><a href="eda.html">EDA</a></li>
+					<li><a href="nlp.html">NLP</a></li>
+					<li><a href="ml.html">ML</a></li>
+                  	<li><a href="conclusion.html">conclusion</a></li>
+				</ul>
+				<a href="#" class="close">Close</a>
+			</div>
+		</nav>
+
+		<!-- Wrapper -->
+		<section id="wrapper">
+			<header>
+				<div class="inner">
+					<h2>Machine Learning</h2>
+				</div>
+			</header>
+
+			<!-- Content -->
+			<div class="wrapper">
+				<div class="inner">
+					<h2>Executive summary</h2>
+					<p>In the Machine Learning part, we have two business questions to explore. One is "what makes users in the game subreddit like/dislike a post/comment." The other is "how many categories can those posts be placed in and what are they?" We will explore these questions in the following paragraphs, and the technique results will be in the analysis part. </p>
+					<p>The score is a crucial element in Reddit. It will affect who sees the posts and whether they will be popular.We aim to use many Reddit submissions with their features, such as hiding scores, whether the content is suitable for people under 18, whether this post is a video, the number of comments, and the submissions' length, to predict the submission's score. After our data processing, we found that our existing data can explain around 40 percent of the scores. We want to explore and analyze more aspects of the Reddit data and find new results. We build two machine-learning models that utilize the posts from both subreddits. The objective is to see if machine learning algorithms can identify the subreddits a post belongs to based on its content. Both algorithms perform well (accuracy > 95%), indicating that the post's content from different subreddit is significantly distinguishable. The algorithm can help users put their posts into the correct subreddit.</p>
+
+					<h2>Analysis report</h2>
+					<h3 class="major">Question1: Whether we can use texts from the users to split those posts into different subreddits?</h3>
+					<p>In the Machine Learning part, we have two business questions. Moreover, we would like to change one of our business goals from "How many categories can those posts be placed in? And what are they?" to "Whether we can use texts from the users to split those posts into different subreddits?". We want to change this topic because the original posts need us to label the data manually and cannot label such big datasets. Since we have two subreddits to analyze, we used the subreddit labels to do the classification. We perform two methods: the traditional machine model (Logistic Regression) and the modern machine model (Long-Short Term Memory). After performing the models, we compared the afterward results.</p>
+                    <p>We already get the tokenization for the submission content from the NLP part. Using the CountVectorizer, the contexts have been converted from a collection of text documents to vectors of token counts. After using IDF to judge the importance of each word and get the features, the dataset is ready to perform the machine learning prediction. For the label part, we set zero for league of legends, and one stands for Minecraft.
+                    </p>
+                    <table style="width: 100%">
+                      <colgroup>
+			            <col span="1" style="width: 50%;">
+			            <col span="1" style="width: 50%;">
+                       </colgroup>
+			         <tbody>
+			         <tr>
+			             <td><img src="images/ml1.png" width="420" height="350">
+                         <p style="text-align:center; font-size:16px">
+                              Figure1: Confusion matrix of logistic regression model</p></td>
+			             <td><img src="images/ml2.png" width="420" height="350">
+                         <p style="text-align:center; font-size:16px">
+                              Figure2: Confusion matrix of LSTM regression model</p></td>
+			         </tr>
+			         </tbody>
+			         </table>
+
+                    <p>The first method to do machine learning is logistic regression. The method divide 80% of the data as the training data and the other 20% as the testing data. The ROC curve is shown above by summarizing the model over the training set. The training set area under the AUC-ROC curve is 0.959, which is a pretty high accuracy for the training set. The AUC-ROC score on both the training and testing dataset proved its strength. On the other hand, the logistic regression model shows an accuracy of 0.952 on the testing dataset. LSTM (Long short-term memory) is a type of recurrent neural network that keeps track of past information, which makes it strong with text data. The model we built has 0.973 accuracies on the training set and 0.978 on the test set. The results indicate a significant difference between the two subreddits, League of legends and Minecraft. Classifying an unlabeled post to which subreddits they are in is possible.
+                  </p>
+
+                   <table style="width: 100%">
+                      <colgroup>
+			            <col span="1" style="width: 50%;">
+			            <col span="1" style="width: 50%;">
+                       </colgroup>
+			         <tbody>
+			         <tr>
+			             <td><img src="images/ml3.png" width="420" height="350">
+                         <p style="text-align:center; font-size:16px">
+                              Figure3: ROC Curve of logistic regression model(training data)</p></td>
+			             <td><img src="images/ml4.png" width="420" height="350">
+                       <p style="text-align:center; font-size:16px">
+                              Figure4: ROC Curve of LSTM model(training data)</p></td>
+			         </tr>
+			         </tbody>
+			         </table>
+                  <div class="table-wrapper">
+											<table>
+												<caption>Model Performance</caption>
+												<thead>
+													<tr>
+														<th>Model</th>
+														<th>AUC-ROC</th>
+														<th>Log_Loss</th>
+                                                        <th>Accuracy</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>Logistic Regression</td>
+														<td>0.959</td>
+														<td>6.425</td>
+                                                        <td>0.814</td>
+													</tr>
+													<tr>
+														<td>LSTM</td>
+														<td>0.973</td>
+														<td>0.782</td>
+                                                        <td>0.977</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+					<h3 class="major">Question2: What makes users in game subreddit to like/dislike a post?</h3>
+					<p>This project then tries to use three regression models, linear regression, Gradient-Boosted Trees (GBTs), and random forest to see if there is a way to predict the scores of posts. Ten interested variables: "subreddit", "hide score", "over-18", "is_video", "gilded", "stickied", "num_comments'', "day_of_week", "hour", and "text_length" are selected in the model training process. Except "hour", other variables are all boolean or string and have been transformed into the categorical variables. For the GBTs model, we take the maxDepth as 20, stepSize as 0.2, and maxIter as 50. For the linear regression model, maxIter is set at 10. For random forest regression, we take numTrees as 10, maxDepth as 30.</p>
+          <p>The evaluations of the three models shown below. Overall, they need to perform better in predicting the posts' scores since their R-Squared values are not very high. The random forest regression model works best with less RMSE and MAE and an R-squared of 0.4647. The linear model has a smaller RMSE, but R-squared is worse than GBTs. Based on the density plot, the random forest regression model better captures the actual scores' distribution.
+          </p>
+					<div class="table-wrapper">
+							<table>
+								<caption>Model Performance</caption>
+
+								<thead>
+									<tr>
+										<th>Model</th>
+										<th>RMSE</th>
+										<th>MAE</th>
+																								<th>R-Squard</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Linear Regression</td>
+										<td>553.37</td>
+										<td>83.43</td>
+																								<td>0.329</td>
+									</tr>
+									<tr>
+										<td>Gradient-Boosted</td>
+										<td>526.19</td>
+										<td>69.87</td>
+																								<td>0.3933</td>
+									</tr>
+									<tr>
+										<td>Random Forest Regression</td>
+										<td>494.28</td>
+										<td>63.75</td>
+																								<td>0.4647</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+                  					<img src="images/ml5.png" width="420" height="350" class="center"></td>
+                            <p style="text-align:center; font-size:16px">
+                              Figure5: Comparison density plot of results of three regression models and actual score</p>
+					<p>
+							Since the Random Forest model performs the best model, we especially check the feature performance for this model. There are several exciting factors we found. num_comments has the most critical feature, which has an affecting score of 0.47. The second important is gilded, which means someone gave the poster Reddit gold on the post. Text length and when to post are the third and fourth importance. Other factors seem to have rarely influenced the model.
+						</p>
+						<h4>Feature Importance</h4>
+			    <img src="images/ml6.png" width="420" height="350" class="center"></td>
+
+
+
+
+
+				  <h3 class="major">Bonus Points</h3>
+					<p>For question 1 part, we use the pipeline to get the features of each word. The pipeline includes transferring text word to CountVectorizer and using IDF to count the weight of each word to get features. For question 2, we also apply a pipeline to essentially compare three different model options.
+</p>
+					<br>
+
+					<h2>Code</h2>
+					<li class="major"><a href ="ML_clean.html" target= "_blank">Code for Data Cleaning</a></li>
+					<li class="major"><a href ="ML_Question_1.html" target= "_blank">Code for Question1</a></li>
+					<li class="major"><a href ="ML_Question_2.html" target= "_blank">Code for Question2</a></li>
+
+				</div>
+			</div>
+
+		</section>
+
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+<style>
+	.center {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: 25px;
+	}
+	caption {
+  display: table-caption;
+  text-align: center;
+	font-weight: bold;
+	font-size: 18pt;
+	padding-bottom: 1em;
+}
+</style>
+
+</html>

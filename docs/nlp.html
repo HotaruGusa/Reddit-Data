@@ -1,0 +1,362 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	<title>Natural language processing</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="assets/css/noscript.css" />
+	</noscript>
+</head>
+
+<body class="is-preload">
+
+	<!-- Page Wrapper -->
+	<div id="page-wrapper">
+
+		<!-- Header -->
+		<header id="header">
+			<h1><a href="index.html">Game Reddits Analysis</a></h1>
+			<nav>
+				<a href="#menu">Menu</a>
+			</nav>
+		</header>
+
+		<!-- Menu -->
+		<nav id="menu">
+			<div class="inner">
+				<h2>Menu</h2>
+				<ul class="links">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="introduction.html">Introduction</a></li>
+					<li><a href="eda.html">EDA</a></li>
+					<li><a href="nlp.html">NLP</a></li>
+					<li><a href="ml.html">ML</a></li>
+                  	<li><a href="conclusion.html">conclusion</a></li>
+				</ul>
+				<a href="#" class="close">Close</a>
+			</div>
+		</nav>
+
+		<!-- Wrapper -->
+		<section id="wrapper">
+			<header>
+				<div class="inner">
+					<h2>natural language processing</h2>
+				</div>
+			</header>
+
+			<!-- Content -->
+			<div class="wrapper">
+				<div class="inner">
+                  
+					<h2>Executive summary</h2>
+					<p>In the NLP section, our team first removes all meaningless words in the subreddit through a
+						pipeline. Then, we find each subreddit's most popular topics/news by counting words. Next, our
+						team performs a way(TF-IDF) to score words' relative importance or uniqueness and create a
+						comparison graph between League of Legends and Minecraft. Minecraft seems to have more posts
+						than LOL; most are simple and condensed. However, LOL has fewer posts, and a significant portion
+						has more extended contexts. In addition, our team finds that topics related to esports are
+						popular in the LOL subreddit; most of the posts in MC are about the game itself.</p>
+					<p>By analyzing the submission posts, we can get the sentiment situation based on the different
+						esports teams. We will choose the four most popular esports teams and analyze what people
+						discussed and the sentiment people have when discussing these teams. The results show that LPL
+						and LCK have similar sentiment situations. LCS has less fear emotion, but the pattern is similar
+						to others. However, LEC has much more sadness than others. It may relate to LEC's achievements
+						in the past few years.</p>
+
+					<br>
+					<h2>Dummy Variables</h2>
+					<p>When diving into the content of the LOL subreddit, our team found that many posts do not discuss
+						the game itself but are related to esports/peripherals, etc. We thus add a new business question
+						related to esports, trying to explore users' attitudes towards different esports
+						teams/divisions. Our team learned many backgrounds about Minecraft, enabling us to give more
+						specific questions regarding the game itself. Hence our team proposed a question about the
+						creatures in Minecraft and aimed to study Reddit users' behavior related to it.</p>
+					<h3>Esports Teams</h3>
+					<p>League of Legends esports has many different divisions around the globe. People like to discuss
+						the differences between these divisions. With the help of regex, our team extracts submissions
+						that are related to 9 major divisions: CBLOL(Brazil), LCK(Korea), LCL(Russia), LCO(Oceania),
+						LCS(North America), LEC(European), LJL(Japan), LLA(Latin America), LPL(China). The next part of
+						the project is discovering how Reddit people react to these divisions.</p>
+					<command img src="images/nlp8.png" width="600" height="130" class="center">
+						<h4>League of Legends Esports Divisions</h4>
+					<table>
+						<thead>
+							<tr>
+								<th>Name of Divisions</th>
+								<th>VCS</th>
+								<th>LPL</th>
+								<th>LCL</th>
+								<th>PCS</th>
+								<th>LCO</th>
+								<th>LLA</th>
+								<th>LCK</th>
+								<th>CBLOL</th>
+								<th>LCS</th>
+								<th>LEC</th>
+								<th>LJL</th>
+								<th>Worlds</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th>Times of being mentioned</th>
+								<th>151</th>
+								<th>1955</th>
+								<th>469</th>
+								<th>681</th>
+								<th>4779</th>
+								<th>20905</th>
+								<th>1749</th>
+								<th>128</th>
+								<th>3180</th>
+								<th>10852</th>
+								<th>125</th>
+								<th>8304</th>
+							</tr>
+
+						</tbody>
+					</table>
+					<img src="images/nlp6.png" width="600" height="400" class="center">
+
+
+					<h3>Minecraft Monsters</h3>
+					<p>Minecraft is partially famous for its large creatures. Our team uses regex to find submissions
+						talking about Minecraft creatures. We wish to explore which creature is the hottest on Reddit.
+						Surprisingly, the Witch is the hottest creature, and Zombie is the next. Our team assumes
+						Creeper is the hottest, as it is the most representative monster in Minecraft. It might be
+						because Witch is more critical than Creeper in Minecraft.</p>
+
+					<command img src="images/nlp7.png" width="600" height="130" class="center">
+						<h4>Monsters in Minecraft</h4>
+					<table>
+						<thead>
+							<tr>
+								<th>Name of Monsters</th>
+								<th>Enderman</th>
+								<th>Creeper</th>
+								<th>Drowned</th>
+								<th>Skeleton</th>
+								<th>Spider</th>
+								<th>Witch</th>
+								<th>Zombie</th>
+								<th>Slime</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th>Times of being mentioned</th>
+								<th>818</th>
+								<th>1851</th>
+								<th>497</th>
+								<th>1541</th>
+								<th>855</th>
+								<th>8073</th>
+								<th>2000</th>
+								<th>987</th>
+
+							</tr>
+
+						</tbody>
+					</table>
+
+					<br>
+					<h2>Natural Language Processing</h2>
+					<h3>Distribution Text Length</h3>
+					<p>From the text length graph, we can see the text length difference between Minecraft and League of
+						Legends. We use the log of the text length since
+						some parts of the texts have very large lengths, and we want to keep these data, not considering
+						them outliers. Minecrafts seem to have more posts
+						than LOL, and most posts are less than 100 lengths. Although LOL has fewer posts than Minecraft,
+						a larger portion of the posts have longer texts.</p>
+					<img src="images/nlp2.png" width="600" height="450" class="center">
+
+					<h3>Most Common Words</h3>
+					<p>All submission contents are fed into the word tokenizer, and all stop words are removed. In the
+						circular barplot, it can be seen that "game" is the most popular word in the League of Legends
+						subreddit, followed by "play," "will," "team," "even," "damage," etc. In the Minecraft
+						subreddit, the most common words are "Minecraft," "world," "help," "server," "play," and "game,"
+						which are different from League of Legends.There is one common thing in both LOL and Minecraft,
+						the most common words and the second common words have a considerable gap. However, the top ten
+						words are closer to each other when the rank is large.</p>
+					<img src="images/nlp3.png" width="600" height="650" class="center">
+
+					<h3>TF-idf</h3>
+					<p>Term Frequency–Inverse Document Frequency (TF-IDF) is a measure that can be used to capture the
+						essential words in a document based on how frequently they appear across multiple documents. The
+						higher the TF-IDF score, the more important or relevant the word is. The tables below show each
+						subreddit's top 10 critical words according to TF-IDF. The words with the highest TF-IDF scores
+						in the League of Legends subreddit are "ulti," "schalke", "vcs", "zoner," "flandre," etc. Armut
+						and Flandre are famous League of Legends esports players. IMTA, Hanwha, and Schalke are esports
+						teams, and VCS represents the Vietnam Championship Series. In the list of 10 words having the
+						highest TF-IDF scores, six are related to esports.</p>
+					<p>The scores of these ten words are pretty close. In the Minecraft subreddit, the word "multimc"
+						has the highest score, followed by "workstations," "gamerule," "puth," "thenameseeker," etc.
+						These words are related to the game content itself.</p>
+						<h4>Vocabulary Importance</h4>
+					<table style="width: 100%">
+						<colgroup>
+							<col span="1" style="width: 50%;">
+							<col span="1" style="width: 50%;">
+						</colgroup>
+						<tbody>
+							<tr>
+								<td><table>
+									<thead>
+										<tr>
+											<th>Word-League</th>
+											<th>Score</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<th>ulti</th>
+											<th>99.744</th>
+										</tr>
+										<tr>
+											<th>schalke</th>
+											<th>98.528</th>
+										</tr>
+										<tr>
+											<th>vcs</th>
+											<th>98.123</th>
+										</tr>
+										<tr>
+											<th>zoner</th>
+											<th>97.717</th>
+										</tr>
+										<tr>
+											<th>flandre</th>
+											<th>97.717</th>
+										</tr>
+										<tr>
+											<th>squishies</th>
+											<th>97.312</th>
+										</tr>
+										<tr>
+											<th>hanwha</th>
+											<th>97.312</th>
+										</tr>
+										<tr>
+											<th>imta</th>
+											<th>96.906</th>
+										</tr>
+										<tr>
+											<th>ultimates</th>
+											<th>95.690</th>
+										</tr>
+										<tr>
+											<th>armut</th>
+											<th>95.690</th>
+										</tr>
+										</tr>
+									</tbody>
+								</table></td>
+								<td><table>
+									<thead>
+										<tr>
+											<th>Word-Minecraft</th>
+											<th>Score</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<th>multimc</th>
+											<th>98.528</th>
+										</tr>
+										<tr>
+											<th>worksations</th>
+											<th>96.501</th>
+										</tr>
+										<tr>
+											<th>gamerule</th>
+											<th>94.068</th>
+										</tr>
+										<tr>
+											<th>puth</th>
+											<th>93.257</th>
+										</tr>
+										<tr>
+											<th>thenameseeker</th>
+											<th>90.824</th>
+										</tr>
+										<tr>
+											<th>minecrafters</th>
+											<th>90.824</th>
+										</tr>
+										<tr>
+											<th>israphel</th>
+											<th>90.824</th>
+										</tr>
+										<tr>
+											<th>netherrack</th>
+											<th>90.013</th>
+										</tr>
+										<tr>
+											<th>xboxmicrosoft</th>
+											<th>9.731</th>
+										</tr>
+										<tr>
+											<th>visibleancient</th>
+											<th>9.731</th>
+										</tr>
+									</tbody>
+								</table></td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3>Sentiment Model</h3>
+					<p>The sentiment made by the sparkNLP framework. We choose the top 4 esports teams from league of
+						legends' subreddits: LPL, LCK, LEC, and LCS. By analysis, their submission on Reddit counts the
+						total amount of different sentiments, which include: fear, joy, sadness, and surprise. The
+						result shows that when users talk about the esports team, LPL and LCK has very similar sentiment
+						situation. LCS has less fear emotion, but the pattern is similar to others. However, LEC has
+						much more sadness than others. It may relate to LEC's achievements in the past few years.</p>
+					<p>We use the sentiment part to solve the "positive effect in posts" question. We did the analysis
+						on submission instead of comments in the NLP part. The submission subreddits have more columns
+						and are more important than the comments. The central post part can decide the topics, so it is
+						necessary to analyze the submission part to know the posts' positive/negative impact.</p>
+					<iframe src="esport_sentiment_situation.html" width="850" height="850" class="center"></iframe>
+                    <p style="text-align:center; font-size:16px">
+                              Figure3: The percentage of people's feelings in different esports in the league of legends</p>
+
+					<h2>Code</h2>
+					<li class="major"><a href="NLP1.html" target="_blank">Code for NLP part</a></li>
+					<li class="major"><a href="SentimentModel.html" target="_blank">Code for sentiment part</a></li>
+
+				</div>
+			</div>
+
+		</section>
+
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+<style>
+	.center {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: 25px;
+	}
+</style>
+
+</html>

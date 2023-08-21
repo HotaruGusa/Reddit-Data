@@ -1,0 +1,234 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	<title>Conclusion</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="assets/css/noscript.css" />
+	</noscript>
+</head>
+
+<body class="is-preload">
+
+	<!-- Page Wrapper -->
+	<div id="page-wrapper">
+
+		<!-- Header -->
+		<header id="header">
+			<h1><a href="index.html">Game Reddits Analysis</a></h1>
+			<nav>
+				<a href="#menu">Menu</a>
+			</nav>
+		</header>
+
+		<!-- Menu -->
+		<nav id="menu">
+			<div class="inner">
+				<h2>Menu</h2>
+				<ul class="links">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="introduction.html">Introduction</a></li>
+					<li><a href="eda.html">EDA</a></li>
+					<li><a href="nlp.html">NLP</a></li>
+					<li><a href="ml.html">ML</a></li>
+					<li><a href="conclusion.html">Conclusion</a></li>
+				</ul>
+				<a href="#" class="close">Close</a>
+			</div>
+		</nav>
+
+		<!-- Wrapper -->
+		<section id="wrapper">
+			<header>
+				<div class="inner">
+					<h2>Conclusion</h2>
+				</div>
+			</header>
+
+			<!-- Content -->
+			<div class="wrapper">
+				<div class="inner">
+
+					<section>
+						<h3 class="major">EDA part</h3>
+						<p>In the early stage of the project, our team presents various visualizations of the Reddit data. Including top games being discussed in Reddit, the sensitive content percentage, user busy time, etc. Visualization helps our team resolve some of our business goals. We specified the target game we will focus on for the rest of the project and explored the relationship between these games and other social media (youtube). The visualization shows that users respond to posts between 3 PM and 8 PM, and the post's creation time does not affect its score.</p>
+
+						<h3 class="major">NLP part</h3>
+						<p>We performed data transformation and analysis using natural language processing. We create two new variables using regular expressions according to the post's content. Our team found that users in the League subreddit tend to discuss esports, but Minecrafters in Reddit are more interested in the game content. Sentiment analysis was utilized to determine the user's attitude toward specific subjects on different subreddits. We found that users who care about league esports are intimidated by Asian divisions, and the witch is the most mentioned monster by Minecrafters on Reddit.</p>
+                      	<img src="images/c2.png" width="600" height="600" class="center">
+						<p style="text-align:center; font-size:16px">
+						Figure1: The top 20 most common words on League of Legends and Minecraft subreddits.</p>
+						<h3 class="major">ML part</h3>
+						<p>In the machine learning section, our team attempts to develop algorithms that can based on a post’s content to predict its subreddit. This could allow automatic recommendations when users create a new post. In order to make machines understand human works, we used two methods: word embedding and one-hot encoding. We trained two models, one is a linear model: logistic regression, and a deep neural network: LSTM. Based on the performance matrix (AUC score, accuracy), LSTM outperformed the logistic regression, and have about 97% accuracy on distinguishing posts from either LeagueofLegends subreddit or Minecraft subreddit. </p>
+						<p>All posts on the platform are sorted according to the submission score, representing the number of upvotes minus the number of downvotes. The next goal of our team in the machine learning section is to apply different models to predict the score that posts will receive. Our team first fit a linear regression model to establish a baseline. Then, two other models (Gradient-Boosted Trees and random forest) are performed on the training set. We compare the models based on three metrics: R-Squared, MAE, and RMSE. The predictions of the second model (Gradient-Boosted Trees) are more accurate than linear regression but still need improvement. Overall, the random forest model has the best performance since it has the lowest error and highest R-square.</p>
+                  		<img src="images/ml5.png" width="420" height="350" class="center">
+                            <p style="text-align:center; font-size:16px">
+                              Figure2: Comparison density plot of results of three regression models and actual score</p>
+					</section>
+
+					<section>
+						<h3 class="major">Appendix I (Answers of Business Questions):</h3>
+						<div class="row">
+							<div class="col-12 col-12-medium">
+								<ol>
+									<li>Which games will be the project's topic, and why?</li>
+									<ul>
+										<li>This project mainly focuses on League of Legends and Minecraft because they are the top 2 games with the highest count of posts on Reddit in the past 180 days.
+										</li>
+									</ul>
+									<li>Are the content of the games' subreddits suitable for teenagers?
+										<ul>
+											<li>
+												The post contents of the top 10 games are pretty suitable for teenagers. The over-18 content is just a tiny part compared to the total post(<1%).
+											</li>
+
+										</ul>
+									</li>
+									<li>Which topics and news are discussed very popular in each subreddit?
+										<ul>
+											<li>
+												Esports is popular in the League of Legends subreddit. On the other hand, users in the Minecraft subreddit talk more about the game itself.
+											</li>
+										</ul>
+									</li>
+									<li>What is the game popularity in each game/subreddit?
+										<ul>
+											<li>
+												 Our team is not able to answer this question at the current stage, since we only have the data from the past year and a half.
+											</li>
+										</ul>
+									</li>
+									<li>What is the relationship between these subreddits and social media(Youtube)?
+										<ul>
+											<li>
+												Minecraft has significant higher connection with social media. It is nearly 3 times than league of legends.
+											</li>
+										</ul>
+									</li>
+									<li>Based on the target games, which game will show a positive effect in
+										reality(posts)?
+										<ul>
+											<li>
+												As a result, our team decided not to move forward with this question. The most important reason is that we need a better metric to evaluate the 'positive effect,' as the posts' data only contain limited information. Also, it is hard to discover a social impact only through Reddit, as it is only a network of communities.
+											</li>
+										</ul>
+									</li>
+									<li>
+										Based on different target games, will the game user tend to post videos or
+										comments, why will this phenomenon happen?
+										<ul>
+											<li>
+												Based on our latest proposal, this project will mainly focus on two game subreddits: r/LeagueofLegends and r/Minecraft, and it narrows the questions' range a lot. Also, the only data we can know is how many videos/comments are being posted, yet the data/methods required to find the reason behind it are out of the scope of this Reddit data analysis project.
+											</li>
+										</ul>
+									</li>
+									<li>
+										What makes users in game subreddit to like/dislike a post/comment?
+
+										<ul>
+											<li>
+												The random forest model performs best in predicting the posts' scores. According to the feature importance table of this model, the number of comments is the most important feature, followed by the number of gilded tags on the post, text length, and posting time(hour of the day).
+												</li>
+										</ul>
+									</li>
+									<li>
+										Whether we can use texts from the users to split those posts into different subreddits?
+										<ul>
+											<li>
+												Yes. Logistic regression and LSTM (Long short-term memory) are applied to classify the posts' contents. The result indicates that the post's content from different subreddit is significantly distinguishable.
+											</li>
+										</ul>
+									</li>
+									<li>
+										At what time(hour of a day) is each subreddit most active?
+										<ul>
+											<li>
+												Users in both subreddits are most active in the afternoon — between 3 PM and 8 PM.
+											</li>
+										</ul>
+									</li>
+									<li>
+										Identify the relationship between comments scores and post creation time(day of week)
+										<ul>
+											<li>
+												Comments scores have no apparent relationship to post-creation time(day of week).
+											</li>
+										</ul>
+									</li>
+								</ol>
+							</div>
+					</section>
+
+
+							<section>
+								<h3 class="major">Appendix II (what updates we made):</h3>
+								<div class="row">
+									<div class="col-12 col-12-medium">
+										<ol>
+											<li>Add title/tag to all plots.</li>
+											<br>
+											<li>Move Youtube data from the NLP section to the EDA section.
+											</li>
+											<br>
+
+											<li>Change table from screenshot to HTML table.
+											</li>
+											<br>
+
+											<li>Reformat the text and image (bold, size, etc.).
+											</li>
+											<br>
+
+											<li>Update the README in the git repo to include its URL.
+											</li>
+											<br>
+
+											<li>Modifying the introduction paragraph makes it more non-technical.
+											</li>
+											<br>
+
+											<li>Update the image explanation in the EDA section.
+											</li>
+										</ol>
+									</div>
+							</section>
+
+							<h3 class="major">For future explores:</h3>
+							<p>Until now, this project has explored Exploratory Data Analysis, Natural Language Processing, and Machine Learning parts of Minecraft and League of Legends. Next step, our team will collect more data, including more genres, not only online games (League of Legends) and console games (Minecraft), such as mobile games, PC games, and social gaming. We decided to pop up more business-related questions based on Reddit data and find more interests posts. Also, until now, most data are coming from the Reddit website, and the resources could be more extensive. We decided to use not only Youtube API data but also explore more Twitter data, Tiktok, Etc. Using these data, our group can perform different models to do Natural Language Processing, such as self-design Bert and sentiment analysis for different data channels. Our group will also perform clustering to classify different category players. We can also predict the number of users, the sentiment trend, Etc. Please pay attention to our future work.</p>
+				</div>
+			</div>
+
+		</section>
+
+
+
+		<!-- Footer -->
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+<style>
+	.center {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: 25px;
+	}
+</style>
+</html>

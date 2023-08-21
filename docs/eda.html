@@ -1,0 +1,442 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	<title>Exploratory data analysis</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="assets/css/noscript.css" />
+	</noscript>
+</head>
+
+<body class="is-preload">
+
+	<!-- Page Wrapper -->
+	<div id="page-wrapper">
+
+		<!-- Header -->
+		<header id="header">
+			<h1><a href="index.html">Game Reddits Analysis</a></h1>
+			<nav>
+				<a href="#menu">Menu</a>
+			</nav>
+		</header>
+
+		<!-- Menu -->
+		<nav id="menu">
+			<div class="inner">
+				<h2>Menu</h2>
+				<ul class="links">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="introduction.html">Introduction</a></li>
+					<li><a href="eda.html">EDA</a></li>
+					<li><a href="nlp.html">NLP</a></li>
+					<li><a href="ml.html">ML</a></li>
+                    <li><a href="conclusion.html">conclusion</a></li>
+				</ul>
+				<a href="#" class="close">Close</a>
+			</div>
+		</nav>
+
+		<!-- Wrapper -->
+		<section id="wrapper">
+			<header>
+				<div class="inner">
+					<h2>Exploratory data analysis</h2>
+				</div>
+			</header>
+
+			<!-- Content -->
+			<div class="wrapper">
+				<div class="inner">
+                    <h2>Executive summary</h2>
+                    <p>The Exploratory Data Analysis contains different ways to explore Reddit posts, both submissions and commands. On this page, we tried to find the most popular topics related to games and got some basic information regarding the different columns of the dataset. For example, the top 10 games, sensitive situations, most common words, the time each subreddit is most active, comments score over creation time, and other summary tables.
+</p>
+                    <p>
+                      The Reddit dataset contains Reddit posts from 2021/01/01 to 2022/08/31. Since the data has timeliness, we only selected half-year data for Exploratory Data Analysis. The EDA part can solve half questions in the introduction section. On the other hand,  the score is one of the most critical elements in Reddit to judge if people like or dislike the post. There are many tables/plots related to scores in this tab. This information helps us to check if any other elements influence the score value in Reddit. At the end of this part, we selected and prepared proper data columns for further analysis.
+                  </p>
+                  	<h2>External Source</h2>
+					<h3 class="major">Top 10 Games</h3>
+					<p> For selecting the most popular games, we
+						find all game tags on the Reddit official website:
+						https://www.reddit.com/r/gaming/wiki/list-sorted-by-subscribers/.
+						After saving all game names into a list, count the number of subreddits on the submission
+						dataset and choose the top 10 games from the subreddits.</p>
+					<p> The graph stands for the top 10 games with the highest count of posts on Reddit in the past 180
+						days. The x-axis stands for a count of posts; the y-axis stands for the names of games. We will
+						select two games from this work. At first, we wanted to get one online game and one single game.
+						However, there are no single games in the top 10 games list. Finally, we chose a competitive
+						game, league of legends, and another cooperative game Minecraft.
+					</p>
+					<img src="images/p1.png" width="700" height="400" class="center">
+
+					<h3 class="major">Youtube API: count for total videos</h3>
+					<p> Another external data is using the Youtube API. By precisely the date of video was created, we
+						get the total count of videos staged by each game, league of legends, and Minecraft. The table
+						collects the data for the past one day, three days, one week, and one month. This table
+						indicates the relationship between these subreddits and social media(Youtube). Minecraft has
+						higher posts and popularity on Youtube than league of legends. It is nearly three times the
+						total count.</p>
+					<h4>Total Count of Videos Has Been Posted on Youtube</h4>
+					<table>
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>1 day</th>
+								<th>3 days</th>
+								<th>1 week</th>
+								<th>1 month</th>
+							</tr>
+
+
+						</thead>
+						<tbody>
+							<tr>
+								<th>
+									League of Legends
+								</th>
+								<th>7599</th>
+								<th>21139</th>
+								<th>34829</th>
+								<th>188043</th>
+							</tr>
+							<tr>
+								<th>
+									Minecraft
+								</th>
+								<th>50879</th>
+								<th>80688</th>
+								<th>148639</th>
+								<th>342650</th>
+							</tr>
+						</tbody>
+
+					</table>
+					<command img src="images/nlp1.png" width="600" height="450" class="center">
+		
+					<h3 class="major">Sensitive Situation</h3>
+					<p> This is a pie chart to present if the submitted content is suitable for people who age under 18.
+						The ‘gamename_health’ stands for posts in this game that are suitable for people under 18. We
+						want to use this information to analyze if these top 10 games are suitable for teenagers. From
+						this pie chart, we can see the over-18 content is just a very small part compared to the total
+						post. We can hardly see these over-18 contents in the pie chart. It is less than 1% for each
+						game. We may judge these top 10 games do not have too much negative impact on teenagers.
+					</p>
+					<iframe src="over_18.html" scrolling="no" frameborder="0" width="650" height="600" class="center"></iframe>
+                    <p style="text-align:center; font-size:16px">
+                              Figure2: How many posts contain over-18 tag in each game subreddits</p>
+					<h3 class="major">Wordcloud for Two Games</h3>
+					<p> There are two-word cloud plots from league of legends and Minecraft. The plots remove some
+						meaningless words like ‘HTTPS’, ‘mt’. There are some submission posts whose body text has been
+						deleted or removed, so we set ‘deleted’ and ‘removed’ as the stopword to ignore them. We can see
+						these two-word clouds are pretty similar. League of legends discusses more ‘champion’ and
+						‘damage’. Minecraft concentrates on ‘server’ and ‘help’ which make sense for a cooperative game.
+					</p>
+                      <table style="width: 100%">
+                      <colgroup>
+			            <col span="1" style="width: 50%;">
+			            <col span="1" style="width: 50%;">
+                       </colgroup>
+			         <tbody>
+			         <tr>
+			             <td><img src="lol_wordcloud.png" width="450" height="450">
+                             <p style="text-align:center; font-size:16px">
+                              Figure3: WordCloud for league of legends</p>
+                       </td>
+			             <td><img src="mc_wordcloud.png" width="450" height="450">
+                           <p style="text-align:center; font-size:16px">
+                              Figure4: WordCloud for minecraft</p>
+                       </td>
+			         </tr>
+			         </tbody>
+			         </table>
+					<h3 class="major">Reddit Users Active Time</h3>
+					<p> We know that there are times in the day when more/fewer people are online. The above line plot
+						shows the number of comments and the creation time (hour of a day) to inform the question of
+						what time of day is each subreddit most active. The x-axis of the plot is the hour of the day,
+						and the y-axis is the number of comments. We can find that peak hours for both subreddits are
+						between the times of 3 PM to about 8 PM.</p>
+					<img src="images/p22.png" width="600" height="450" class="center">
+					<h3 class="major">Comments Score Over Creation Time</h3>
+					<p>The violin plot measures the comments score and the creation time(different days of the weekend), comparing the League of Legends and Minecraft. The creation time is split into different days on the weekend, such as Monday, Tuesday, Wednesday, Thursday, etc. Since the comment score has an extensive range, which means League of Legends and Minecraft have many hot posts, we use log transformation to show the results. The plot shows the difference between the two games and the difference between each day of the week. From the graph, League of Legends will have more comments with a very high score. Even though there is very little difference between League of Legends and Minecraft on the graph, it has ten times higher scores for each step. The League of Legend comments is also more polarizing than Minecraft. However, Minecraft will have more concentrated comments in the middle areas, which means there are only a few high or low-score comments. Given the data on different weekdays, we can see no difference between the day of the week and the comments score for both League of Legends and Minecraft.</p>
+					<img src="images/p21.png" width="600" height="450" class="center">
+
+					<h2>Summary Tables<h2>
+							<h3 class="major">Scores, controsersiality, summary tables</h3>
+							<p>This is a summary table for scores in the top 10 games. A submission's score is simply
+								the number of upvotes minus the number of downvotes. From the summary table, we can see
+								the median is close to 3. The minimum value is zero for all games. This may mean even if
+								the downvotes are more than the upvotes, they will not be counted as a negative value in
+								the submission score. However, some subreddits have a high max score which is more than
+								700,000. This means there exist some posts that got many upvotes in their subreddit
+								area. </p>
+								<h4>Score Summary of Game Subreddits</h4>
+								<table class="alt">
+									<thead>
+										<tr>
+											<th>Subreddit</th><th>Mean_Score</th><th>Min_Score</th><th>Q25</th><th>Median</th><th>Q75</th><th>Max_Score</th><th>Total_Number</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<th>Terraria</th><th>180.66</th><th>0</th><th>1.0</th><th>3.0</th><th>14.0</th><th>55099</th><th>170589</th>
+										</tr>
+										<tr>
+											<th>Minecraft</th><th>191.69</th><th>0</th><th>1.0</th><th>2.0</th><th>8.0</th><th>123524</th><th>765080</th>
+										</tr>
+										<tr>
+											<th>FIFA</th><th>18.02</th><th>0</th><th>1.0</th><th>1.0</th><th>2.0</th><th>11784</th><th>276038</th>
+										</tr>
+										<tr>
+											<th>DestinyTheGame</th><th>70.33</th><th>0</th><th>0.0</th><th>1.0</th><th>2.0</th><th>44038</th><th>291297</th>
+										</tr>
+										<tr>
+											<th>Pokemon</th><th>185.01</th><th>0</th><th>1.0</th><th>1.0</th><th>15.0</th><th>77086</th><th>267509</th>
+										</tr>
+										<tr>
+											<th>Halo</th><th>125.32</th><th>0</th><th>1.0</th><th>2.0</th><th>10.0</th><th>57164</th><th>310928</th>
+										</tr>
+										<tr>
+											<th>DnD</th><th>109.49</th><th>0</th><th>1.0</th><th>2.0</th><th>5.0</th><th>62959</th><th>245845</th>
+										</tr>
+										<tr>
+											<th>LeagueofLegends</th><th>102.02</th><th>0</th><th>1.0</th><th>3.0</th><th>17.0</th><th>83074</th><th>392085</th>
+										</tr>
+										<tr>
+											<th>Warthunder</th><th>94.26</th><th>0</th><th>1.0</th><th>3.0</th><th>17.0</th><th>15556</th><th>221689</th>
+										</tr>
+										<tr>
+											<th>ClassOfClans</th><th>54.08</th><th>0</th><th>1.0</th><th>1.0</th><th>4.0</th><th>11703</th><th>157003</th>
+										</tr>
+									</tbody>
+									
+									</table>
+
+							<h3 class="major">Top 10 game age-sensitive</h3>
+							<p>This is a table that counts post scores for age-sensitive content in different game
+								subreddits. We choose the average score to present the score situation based on the
+								column ‘over-18’. It is interesting that different games have different situations.
+								Games like DestinyTheGame and Fifa have similar scores in both over-18 content or not.
+								Minecraft has a higher score value with no age-sensitive content. Some games like
+								Terraria will have much higher scores with over-18 content. This may depend on the game
+								type, Terraria is more closely related to Splatter. The player may like to discuss
+								age-sensitive content on Reddit.</p>
+							<h4>Score of Posts Contain Sensitive Material for Each Subreddit</h4>
+							<img src="images/p3.png" width="450" height="600" class="center">
+
+							<h3 class="major">The newest and latest post time</h3>
+							<p>TThis table is pretty normal and indicates the newest post date and latest post date for
+								our dataset. Since data always has timeliness, it is important to know the time range
+								for the dataset. From this table, we choose the top 10 games based on the posts from the
+								past 180 days.</p>
+							<h4>Creation Time</h4>
+							<table class="alt">
+								<thead>
+									<tr>
+										<th>Newest_date</th>
+										<th>Latest_date</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>2022-08-31 23:59:59</td>
+										<td>2021-01-01 00:00:00</td>
+									</tr>
+								</tbody>
+							</table>
+						 <command img src="images/p4.png" width="450" height="200" class="center">
+
+							<h3 class="major">The number of posts discuss specific games in the gaming subreddit </h3>
+							<p>This table shows the number of posts that talked about league of legends and Minecraft in
+								the gaming subreddit. We extract this information using regular expressions from the
+								content in the post. One can observe that the fraction is extremely low (25:100000).
+								Considering the size of the league of legends and Minecraft subreddits, we can conclude
+								that users tend to post related content to more specific subreddit (e.g. r/minecraft
+								rather than r/gaming).</p>
+							<command img src="images/main_speci_subreddit.png" height="100" class="center">
+								<h4>Posts Count</h4>
+							<table class="alt">
+								<thead>
+									<tr>
+										<th>Number of Posts that mentioned Leagues/Minecraft</th>
+										<th>Number of Posts that didn't mention Leagues/Minecraft</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>25</td>
+										<td>100,797</td>
+									</tr>
+								</tbody>
+							</table>
+
+
+
+							<h2>New Variables<h2>
+									<h3 class="major">Creation of time</h3>
+									<p>Given the created_utc which is the time in the database and created a new column
+										that shows the transformed data format YY-MM-DD HH:MM:SS, and then extract the
+										hour from DateTime.</p>
+									<command img src="images/p5.png" width="700" height="450" class="center">
+										<h4>Posts Creation Time</h4>
+									<table class="'alt">
+										<thead>
+											<tr>
+												<th>created_utc</th>
+												<th>score</th>
+												<th>submission_created_date</th>
+												<th>hour</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>
+													1624440727
+												</td>
+												<td>0</td>
+												<td>2021-06-23 09:32:07</td>
+												<td>9</td>
+											</tr>
+											<tr>
+												<td>
+													1613926972
+												</td>
+												<td>1</td>
+												<td>2021-02-21 17:02:52</td>
+												<td>17</td>
+											</tr>
+											<tr>
+												<td>
+													1614011946
+												</td>
+												<td>1</td>
+												<td>2021-02-22 16:39:06</td>
+												<td>16</td>
+											</tr>
+											<tr>
+												<td>
+													1613922582
+												</td>
+												<td>1</td>
+												<td>2021-02-21 15:49:42</td>
+												<td>15</td>
+											</tr>
+											<tr>
+												<td>
+													1617126111
+												</td>
+												<td>1</td>
+												<td>2021-03-30 17:41:51</td>
+												<td>17</td>
+											</tr>
+										</tbody>
+									</table>
+									<h3 class="major">day of the week</h3>
+									<p>Given the data format YY-MM-DD HH:MM:SS and build a new column transformed to
+										which day of the week.</p>
+									<command img src="images/p6.png" width="900" height="450" class="center">
+										<h4>Posts Creation Time - New</h4>
+									<table class="alt">
+										<thead>
+											<tr>
+												<th>created_utc</th>
+												<th>type</th>
+												<th>submission_created_date</th>
+												<th>week_day_number</th>
+												<th>hour</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>1649701690</td><td>Minecraft</td><td>2022-04-11 18:28:10</td>
+												<td>Mon</td><td>18</td>
+											</tr>
+											<tr>
+												<td>1649701696</td><td>Minecraft</td><td>2022-04-11 18:28:16</td>
+												<td>Mon</td><td>18</td>
+											</tr>
+											<tr>
+												<td>1649701697</td><td>Minecraft</td><td>2022-04-11 18:28:17</td>
+												<td>Mon</td><td>18</td>
+											</tr>
+											<tr>
+												<td>1649701719</td><td>Minecraft</td><td>2022-04-11 18:28:39</td>
+												<td>Mon</td><td>18</td>
+											</tr>
+										</tbody>
+									</table>
+
+									<h3 class="major">Log of the score</h3>
+									<p>Scores are distributed widely, and most of the posts are concentrated in the -10
+										to 20. There are also some extremely high score posts, which are over 10000. Log
+										transformation is performed for the scores. Negative values will add the
+										negative sign after the log transformation.</p>
+										<h4>Score of Posts - New</h4>
+									<img src="images/p7.png" width="700" height="400" class="center">
+
+									<h3 class="major">Interesting columns may used later</h3>
+									<p>‘author’: the author of the submission</p>
+									<p>‘score’: a submission's score is simply the number of upvotes minus the number of
+										downvotes</p>
+									<p>'hide_score': boolean, if the score is hidden</p>
+									<p>'over_18': boolean, if the content is suitable for teenagers whose age is under
+										18</p>
+									<p>'is_video': boolean, whether the post is in video format</p>
+									<p>‘gilded’: “gilded” means someone spent real money to reward the poster with
+										Reddit Gold</p>
+									<p>‘distinguished’: flag to determine whether the submission is posted by moderators
+										or admins. “null” means not distinguished</p>
+									<p>'created_utc': the submission time in UTC format</p>
+									<p>‘selftext’: the main content of the submission post</p>
+									<p>‘stickied’: a post that has been "stuck" to the top of a subreddit by the
+										moderators</p>
+									<p>‘num_comments’: the total number of comments exist for the submission post</p>
+									<p>‘disable_comments’: boolean, if leave comments is available for this post</p>
+									<p>‘text_len’: the length of the body text</p>
+									<p>‘day_of_week’: the weekday of the post date</p>
+									<p>‘hour’: an hour of the day of the post date</p>
+
+									<h2>Code</h2>
+                              		<li class="major"><a href="external_source.html" target="_blank">Code for external source part</a>
+                                    </li>
+									<li class="major"><a href="project_eda_submission.html">Code for submiision part</a>
+									</li>
+									<li class="major"><a href="project_eda_comment.html">Code for comments part</a></li>
+
+				</div>
+
+
+			</div>
+	</div>
+
+	</section>
+
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+<style>
+	.center {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: 25px;
+	}
+</style>
+
+</html>
